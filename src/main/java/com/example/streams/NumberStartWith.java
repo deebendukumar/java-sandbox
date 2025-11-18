@@ -2,6 +2,7 @@ package com.example.streams;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class NumberStartWith {
 
@@ -9,9 +10,10 @@ public class NumberStartWith {
         List<Integer> list = Arrays.asList(1, 200, 234, 234, 300, 301, 304, 500, 285);
 
         //list all number starting with 2
-        list.stream()
+        List<Integer> l = list.stream()
                 .map(String::valueOf)
                 .filter(s -> s.startsWith("2"))
-                .forEach(System.out::println);
+                .map(Integer::valueOf)
+                .collect(Collectors.toList());
     }
 }
